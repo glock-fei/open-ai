@@ -144,7 +144,7 @@ ensure that the project can continue to grow and improve.
 You can install the package via composer:
 
 ```bash
-composer require orhanerday/open-ai
+composer require glock-fei/open-ai
 ```
 
 ## Quick Start ⚡

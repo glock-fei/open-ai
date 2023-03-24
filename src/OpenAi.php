@@ -1,6 +1,6 @@
 <?php
 
-namespace Orhanerday\OpenAi;
+namespace  GlockFei\OpenAi;
 
 use Exception;
 
@@ -13,9 +13,12 @@ class OpenAi
     private array $contentTypes;
     private int $timeout = 0;
     private object $stream_method;
+
     private string $customUrl = "";
     private string $proxy = "";
     private array $curlInfo = [];
+    private array $curl_info = [];
+
 
     public function __construct($OPENAI_API_KEY)
     {
@@ -40,6 +43,14 @@ class OpenAi
     }
 
     /**
+     * @param array $infos [CURLOPT_SSL_VERIFYPEER => false]
+     */
+    public function setCurlInfos(array $infos)
+    {
+        $this->curl_info = $infos;
+    }
+    /**
+     *
      * @return bool|string
      */
     public function listModels()
@@ -89,7 +100,7 @@ class OpenAi
         if ($stream != null && array_key_exists('stream', $opts)) {
             if (!$opts['stream']) {
                 throw new Exception(
-                    'Please provide a stream function. Check https://github.com/orhanerday/open-ai#stream-example for an example.'
+                    'Please provide a stream function. Check https://github.com/glock-fei/open-ai#stream-example for an example.'
                 );
             }
 
@@ -525,6 +536,9 @@ class OpenAi
             CURLOPT_POSTFIELDS     => $post_fields,
             CURLOPT_HTTPHEADER     => $this->headers,
         ];
+
+        if (!empty($this->curl_info))
+            $curl_info = array_merge($curl_info, $this->curl_info);
 
         if ($opts == []) {
             unset($curl_info[CURLOPT_POSTFIELDS]);
