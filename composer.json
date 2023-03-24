@@ -1,10 +1,10 @@
 {
-    "name": "glock-fei/open-api",
-    "description": "OpenAI PHP SDK for orhanerday",
+    "name": "glock-fei/open-ai",
+    "description": "openai php sdk for orhanerday",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "GlockFei\\OpenApi\\": "src/"
+            "GlockFei\\OpenAi\\": "src/"
         }
     },
     "authors": [

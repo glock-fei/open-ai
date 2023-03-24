@@ -1,6 +1,6 @@
 <?php
 
-namespace Orhanerday\OpenAi;
+namespace  GlockFei\OpenAi;
 
 use Exception;
 
@@ -93,7 +93,7 @@ class OpenAi
         if ($stream != null && array_key_exists('stream', $opts)) {
             if (! $opts['stream']) {
                 throw new Exception(
-                    'Please provide a stream function. Check https://github.com/orhanerday/open-ai#stream-example for an example.'
+                    'Please provide a stream function. Check https://github.com/glock-fei/open-ai#stream-example for an example.'
                 );
             }
 
