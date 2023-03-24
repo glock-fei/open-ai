@@ -420,8 +420,9 @@ class OpenAi
             CURLOPT_HTTPHEADER => $this->headers,
         ];
 
-        if (!empty($this->curl_info))
-            $curl_info = array_merge($curl_info, $this->curl_info);
+        foreach ($this->curl_info as $key => $val){
+            $curl_info[$key] = $val;
+        }
 
         if ($opts == []) {
             unset($curl_info[CURLOPT_POSTFIELDS]);
